@@ -44,3 +44,24 @@ services:
     ports:
       - 15672:15672
       - 5672:5672
+
+  producer:
+    build:
+      context: ./producer
+      dockerfile: producer.dockerfile
+    depends_on:
+      - haproxy
+
+  consumer1:
+    build:
+      context: ./consumer
+      dockerfile: consumer.dockerfile
+    depends_on:
+      - haproxy
+
+  consumer2:
+    build:
+      context: ./consumer
+      dockerfile: consumer.dockerfile
+    depends_on:
+      - haproxy
