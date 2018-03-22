@@ -20,7 +20,7 @@ logger.info(' [*] Waiting for messages. To exit press CTRL+C')
 def callback(ch, method, properties, body):
     logger.info(" [x] Received %r" % body)
     time.sleep(body.count(b'.'))
-    print(" [x] Done")
+    logger.info(" [x] Done")
     ch.basic_ack(delivery_tag=method.delivery_tag)
 
 channel.basic_qos(prefetch_count=1)
